@@ -1,0 +1,52 @@
+
+  @font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Ubuntu Regular'), local('Ubuntu-Regular'), url(https://fonts.gstatic.com/s/ubuntu/v11/4iCs6KVjbNBYlgoKfw72.woff2) format('woff2');
+  }
+
+  body{
+      margin: 0;
+      padding: 0;
+      background-color: #494949;
+  }
+
+   .Container{
+    font-family: "Ubuntu";
+   }
+
+   .App-title{
+       color:#a0a2ae;
+       font-size: 4em;
+       margin: 0.3em 0.3em;
+   }
+
+   .App-Content{
+       display: grid;
+       grid-template-columns: 70px auto 70px;
+   }
+   .Form-Search{
+       display: flex;
+       grid-column-start: 2;
+   }
+   .Search-Field{
+       flex-grow: 1;
+       font-family: inherit;
+       font-size: 9vw;
+       line-height: 1;
+       display: inline-block;
+       box-sizing: border-box;
+       width: 75%;
+       padding: 0.05em 0;
+       color: #d17c78;
+       border-bottom: 2px solid;
+       border: 0;
+    background: transparent;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+.Search-Field:focus {
+	outline: none;
+}

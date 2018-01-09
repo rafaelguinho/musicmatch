@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Profile from './Profile';
+import './App.css';
 
 class App extends Component {
 
@@ -19,31 +20,43 @@ class App extends Component {
         fetch(FETCH_URL, {
             method: 'GET',
             headers: {
-                "Authorization": "Bearer BQBw55Men8bKWBR6juYtIXOmz8oUaSrfV8OoXx0ua3vgCgq0DuStEircwpV6IuqyIEkJs0JIiwffldAwKMc6CDJwO_q6rQMYmJp9pwM2_5o8uhp6Vd0J0PqOu2kX8ygq3e2Ka988XG45fQr1MVzWCyxvYfkL8jP2GHA4Mkmx0b7wGkyJsccBldNLN6NsoJWuUMaDErCrPpvigzOuY7ydnJJNuHLkFEIwctLDAyI6GLzmma46RDpq7x47h1surst16rX2r4g85L0nfxA"
-              }
+                "Authorization": "Bearer BQDqG3Dysx52sCeIXg8yW3T1iKmPtLg2xo9uJu2WmERbtp_RgNcFUospIuIhUFEWlq32FjBg4Ixw0C96lF8"
+            }
         }).then(response => response.json())
-        .then(json => {
-            const artist = json.artists.items[0];
-            this.setState({artist});
-        });
+            .then(json => {
+                const artist = json.artists.items[0];
+
+                this.setState({ artist });
+            });
     }
 
     render() {
         return (
-            <div>
-                <div className="App-title">Music master</div>
-                <div>
-                    <input query={this.state.query}
-                        onChange={event => { this.setState({ query: event.target.value }) }}
-                        onKeyPress={event => {
-                            if (event.key === 'Enter') {
-                                this.search();
-                            }
-                        }}
-                        type="search" placeholder="Search and artist..." />
-                    <button onClick={() => this.search()}>Button</button>
+            <div className="Container">
+                <header>
+                    <h2 className="App-title">Music master</h2>
+                </header>
+
+                <div className="App-Content">
+
+                    <div className="Form-Search">
+                        <input className="Search-Field" query={this.state.query}
+                            onChange={event => { this.setState({ query: event.target.value }) }}
+                            onKeyPress={event => {
+                                if (event.key === 'Enter') {
+                                    this.search();
+                                }
+                            }}
+                            type="search" placeholder="Search and artist..." />
+                        <button onClick={() => this.search()}>Button</button>
+                    </div>
                 </div>
-                <Profile artist={this.state.artist}/>
+                {
+                    this.state.artist !== null
+                        ? <Profile artist={this.state.artist} />
+                        : <div></div>
+                }
+
                 <div className="Gallery">
                     Gallery
             </div>
