@@ -20,11 +20,13 @@ class App extends Component {
         fetch(FETCH_URL, {
             method: 'GET',
             headers: {
-                "Authorization": "Bearer BQDqG3Dysx52sCeIXg8yW3T1iKmPtLg2xo9uJu2WmERbtp_RgNcFUospIuIhUFEWlq32FjBg4Ixw0C96lF8"
+                "Authorization": "Bearer BQB-Vz10rmgFXIvFQhFpdvaKZ6YMOOQPtP6NCfEDsEBWeKfaFwadlmWduIUw51KFJLKy1JR1uin9JY-fAbwA2MzCHbxsDvw8NE8gZgKKnqFlwwxo2-Cd7y5RROL_D7eRT5tlNePA_m6Rl3v8MpcnDZYJPDmxpSGYWgKhKFR9EuV4PAmeQZwil5yqqnatRCw2TtT_5of7vCJaXBxmPVOzSpbjlxIRK4jc5CR69GUWfWI2D96VUf276AOHlekMKSkd6omT0IDuLvtFQj4"
             }
         }).then(response => response.json())
             .then(json => {
                 const artist = json.artists.items[0];
+
+                this.state.query = artist.name;
 
                 this.setState({ artist });
             });
@@ -59,7 +61,7 @@ class App extends Component {
 
                 <div className="Gallery">
                     Gallery
-            </div>
+                </div>
             </div>
         )
     }

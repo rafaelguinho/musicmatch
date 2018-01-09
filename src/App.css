@@ -50,3 +50,25 @@
 .Search-Field:focus {
 	outline: none;
 }
+.Img-Profile{
+    width: 350px;
+    height: 350px;
+    box-shadow: 2px 2px 5px rgb(46, 46, 46);
+    border-radius: 175px;
+    object-fit: cover;
+}
+.Profile{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.Followers{
+    font-size: 2vw;
+    color: #f1d51d;
+}
+.Genres{
+    color: #6d6d6d;
+    
+}
