@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Profile from './Profile';
+import Gallery from './Gallery';
 import './App.css';
 
 class App extends Component {
@@ -9,26 +10,42 @@ class App extends Component {
 
         this.state = {
             query: '',
-            artist: null
+            artist: null,
+            tracks: []
         }
     }
 
     search() {
-        const BASE_URL = 'https://api.spotify.com/v1/search?';
-        const FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
+        const BASE_URL = 'https://api.spotify.com/v1/';
+        let FETCH_URL = `${BASE_URL}search?q=${this.state.query}&type=artist&limit=1`;
+        const ALBUM_URL = `${BASE_URL}artists/`;
 
         fetch(FETCH_URL, {
             method: 'GET',
             headers: {
-                "Authorization": "Bearer BQB-Vz10rmgFXIvFQhFpdvaKZ6YMOOQPtP6NCfEDsEBWeKfaFwadlmWduIUw51KFJLKy1JR1uin9JY-fAbwA2MzCHbxsDvw8NE8gZgKKnqFlwwxo2-Cd7y5RROL_D7eRT5tlNePA_m6Rl3v8MpcnDZYJPDmxpSGYWgKhKFR9EuV4PAmeQZwil5yqqnatRCw2TtT_5of7vCJaXBxmPVOzSpbjlxIRK4jc5CR69GUWfWI2D96VUf276AOHlekMKSkd6omT0IDuLvtFQj4"
+                "Authorization": "Bearer BQAmnF6RzqjN5afSmA9Qk6eE7a5dGZaBBQa5bn8Glwu3M9BtbK8MDX8BBW3bzOIglgfBKpIu5QLPCMTVuQ7HlW7_a8spZgo61j8qNYNpSgNig8GGHH4qqIE9ISxR2oyrLbO4KAxxXxZ5dhp39L1-bpDaT5m9qomBhY-yZ49_JXDQUJScJb-MBRA1-2H9lJoNS39zN4-lIv4xu3_trPqJ8MKDhsOFGQ09DfRKpgROjmLL1C-e9n7a_liccJC6Sr3MZafs1Yl39nmaINs"
             }
         }).then(response => response.json())
             .then(json => {
                 const artist = json.artists.items[0];
 
-                this.state.query = artist.name;
-
+                this.setState({ query: artist.name });
                 this.setState({ artist });
+
+                FETCH_URL = `${ALBUM_URL}${artist.id}/top-tracks?country=ES`;
+
+                fetch(FETCH_URL, {
+                    method: 'GET',
+                    headers: {
+                        "Authorization": "Bearer BQAmnF6RzqjN5afSmA9Qk6eE7a5dGZaBBQa5bn8Glwu3M9BtbK8MDX8BBW3bzOIglgfBKpIu5QLPCMTVuQ7HlW7_a8spZgo61j8qNYNpSgNig8GGHH4qqIE9ISxR2oyrLbO4KAxxXxZ5dhp39L1-bpDaT5m9qomBhY-yZ49_JXDQUJScJb-MBRA1-2H9lJoNS39zN4-lIv4xu3_trPqJ8MKDhsOFGQ09DfRKpgROjmLL1C-e9n7a_liccJC6Sr3MZafs1Yl39nmaINs"
+                    }
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        const tracks = json.tracks;
+                        this.setState({ tracks });
+                    });
+
             });
     }
 
@@ -43,6 +60,7 @@ class App extends Component {
 
                     <div className="Form-Search">
                         <input className="Search-Field" query={this.state.query}
+                            value={this.state.query}
                             onChange={event => { this.setState({ query: event.target.value }) }}
                             onKeyPress={event => {
                                 if (event.key === 'Enter') {
@@ -55,13 +73,13 @@ class App extends Component {
                 </div>
                 {
                     this.state.artist !== null
-                        ? <Profile artist={this.state.artist} />
+                        ? <div>
+                            <Profile artist={this.state.artist} />
+                            <Gallery tracks={this.state.tracks}/>
+                        </div>
                         : <div></div>
                 }
 
-                <div className="Gallery">
-                    Gallery
-                </div>
             </div>
         )
     }

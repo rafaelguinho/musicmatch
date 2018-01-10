@@ -10,7 +10,7 @@ class Profile extends Component {
 
         return (
             <div className="Profile">
-                <img src="" className="Img-Profile" alt="profile" src={artist.images[0].url} />
+                <img  className="Img-Profile" alt="profile" src={artist.images[0].url} />
                 <div className="Followers"><strong>Followers:</strong> {artist.followers.total}</div>
                 <div className="Genres">
                     {
