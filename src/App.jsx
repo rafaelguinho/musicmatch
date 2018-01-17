@@ -23,7 +23,7 @@ class App extends Component {
         fetch(FETCH_URL, {
             method: 'GET',
             headers: {
-                "Authorization": "Bearer BQAmnF6RzqjN5afSmA9Qk6eE7a5dGZaBBQa5bn8Glwu3M9BtbK8MDX8BBW3bzOIglgfBKpIu5QLPCMTVuQ7HlW7_a8spZgo61j8qNYNpSgNig8GGHH4qqIE9ISxR2oyrLbO4KAxxXxZ5dhp39L1-bpDaT5m9qomBhY-yZ49_JXDQUJScJb-MBRA1-2H9lJoNS39zN4-lIv4xu3_trPqJ8MKDhsOFGQ09DfRKpgROjmLL1C-e9n7a_liccJC6Sr3MZafs1Yl39nmaINs"
+                "Authorization": "Bearer BQDIpW0rKCoqKy-EiksmeaMpCQ-2JQuu3yRVSQgPqW-10llvCkwek_qENWci5eM378OCLpURnCaOGrfPzJwKK2XI4uDn61dymZ11XkgBmqbVg3Z6k9xalI60JSdgiku0MPJGmTplhwYvrRdFsSxfEEAWzq4dwtW-eu9qlUVcER2ts0-qaNUaG3G7EUu6bpvgeKczhGeEKKyZauseOkbaVKvLCItz8G_1fYuquufJYmLUTNQevFoYja-YLzXp5NTp5KKPv4obve2ms68"
             }
         }).then(response => response.json())
             .then(json => {
@@ -37,7 +37,7 @@ class App extends Component {
                 fetch(FETCH_URL, {
                     method: 'GET',
                     headers: {
-                        "Authorization": "Bearer BQAmnF6RzqjN5afSmA9Qk6eE7a5dGZaBBQa5bn8Glwu3M9BtbK8MDX8BBW3bzOIglgfBKpIu5QLPCMTVuQ7HlW7_a8spZgo61j8qNYNpSgNig8GGHH4qqIE9ISxR2oyrLbO4KAxxXxZ5dhp39L1-bpDaT5m9qomBhY-yZ49_JXDQUJScJb-MBRA1-2H9lJoNS39zN4-lIv4xu3_trPqJ8MKDhsOFGQ09DfRKpgROjmLL1C-e9n7a_liccJC6Sr3MZafs1Yl39nmaINs"
+                        "Authorization": "Bearer BQDIpW0rKCoqKy-EiksmeaMpCQ-2JQuu3yRVSQgPqW-10llvCkwek_qENWci5eM378OCLpURnCaOGrfPzJwKK2XI4uDn61dymZ11XkgBmqbVg3Z6k9xalI60JSdgiku0MPJGmTplhwYvrRdFsSxfEEAWzq4dwtW-eu9qlUVcER2ts0-qaNUaG3G7EUu6bpvgeKczhGeEKKyZauseOkbaVKvLCItz8G_1fYuquufJYmLUTNQevFoYja-YLzXp5NTp5KKPv4obve2ms68"
                     }
                 })
                     .then(response => response.json())
