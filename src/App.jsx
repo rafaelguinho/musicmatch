@@ -24,8 +24,9 @@ class App extends Component {
         fetch(FETCH_URL, {
             method: 'GET',
             headers: {
+
                 "Authorization": `Bearer ${TOKEN}`
-            }
+       }
         }).then(response => response.json())
             .then(json => {
                 const artist = json.artists.items[0];
@@ -39,7 +40,7 @@ class App extends Component {
                     method: 'GET',
                     headers: {
                         "Authorization": `Bearer ${TOKEN}`
-                    }
+                 }
                 })
                     .then(response => response.json())
                     .then(json => {
