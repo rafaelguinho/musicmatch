@@ -18,22 +18,23 @@
 
    .App-title{
        color:#a0a2ae;
-       font-size: 4em;
-       margin: 0.3em 0.3em;
+       font-size: 2em;
+       margin: 0.2em 0.2em;
    }
 
    .App-Content{
        display: grid;
-       grid-template-columns: 70px auto 70px;
+       grid-template-columns: 100px auto 20px;
    }
    .Form-Search{
        display: flex;
        grid-column-start: 2;
    }
    .Search-Field{
+       text-align: center;
        flex-grow: 1;
        font-family: inherit;
-       font-size: 9vw;
+       font-size: 7vw;
        line-height: 1;
        display: inline-block;
        box-sizing: border-box;
@@ -58,17 +59,43 @@
     object-fit: cover;
 }
 .Profile{
-    margin-top: 1em;
+    margin-top: 0.4em;
     display: flex;
     flex-direction: column;
     align-items: center
 }
 
 .Followers{
-    font-size: 2vw;
+    font-size: 1.8vw;
     color: #f1d51d;
 }
 .Genres{
     color: #6d6d6d;
     
+}
+.gallery-container{
+    margin-top: 1.9em;
+}
+.gallery-title{
+    color: white;
+    text-align: center;
+    margin: 0.5em 0
+}
+.gallery{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    
+}
+.track{
+    padding: 0.5em;
+    
+}
+.track-img{
+    width: 100%;
+    box-shadow: 2px 2px 5px rgb(46, 46, 46);
+    height: 320px;
+    object-fit: cover
+}
+.track-text{
+    color: #ccc
 }

@@ -16,6 +16,7 @@ class App extends Component {
     }
 
     search() {
+        const TOKEN = "BQCQmekNINXtMHRzyBsrGEaC7PNaggDGxXSH8LrrmoQgoGML9LebCcg1Ty-NR7E-noxL5m7g59u9Rx-E2gbXNath5qVN4Md6ubNpc0_WzxaCTOATOrzvNnsNWRRIfNimPS31nSdAEjwXIueRIua0EoyGMfxzJDTPwObVO83lHUkNDMNI-CTzKtgUuZ56FUtdns8GXh8WGleuJkfjTX6VkX3K4-xqzvIyYmf1AuEIyKqQHwy_RVL8knxvCjBqKOU2ln8VbjdFQFPxuBE";
         const BASE_URL = 'https://api.spotify.com/v1/';
         let FETCH_URL = `${BASE_URL}search?q=${this.state.query}&type=artist&limit=1`;
         const ALBUM_URL = `${BASE_URL}artists/`;
@@ -23,7 +24,7 @@ class App extends Component {
         fetch(FETCH_URL, {
             method: 'GET',
             headers: {
-                "Authorization": "Bearer BQAmnF6RzqjN5afSmA9Qk6eE7a5dGZaBBQa5bn8Glwu3M9BtbK8MDX8BBW3bzOIglgfBKpIu5QLPCMTVuQ7HlW7_a8spZgo61j8qNYNpSgNig8GGHH4qqIE9ISxR2oyrLbO4KAxxXxZ5dhp39L1-bpDaT5m9qomBhY-yZ49_JXDQUJScJb-MBRA1-2H9lJoNS39zN4-lIv4xu3_trPqJ8MKDhsOFGQ09DfRKpgROjmLL1C-e9n7a_liccJC6Sr3MZafs1Yl39nmaINs"
+                "Authorization": `Bearer ${TOKEN}`
             }
         }).then(response => response.json())
             .then(json => {
@@ -37,7 +38,7 @@ class App extends Component {
                 fetch(FETCH_URL, {
                     method: 'GET',
                     headers: {
-                        "Authorization": "Bearer BQAmnF6RzqjN5afSmA9Qk6eE7a5dGZaBBQa5bn8Glwu3M9BtbK8MDX8BBW3bzOIglgfBKpIu5QLPCMTVuQ7HlW7_a8spZgo61j8qNYNpSgNig8GGHH4qqIE9ISxR2oyrLbO4KAxxXxZ5dhp39L1-bpDaT5m9qomBhY-yZ49_JXDQUJScJb-MBRA1-2H9lJoNS39zN4-lIv4xu3_trPqJ8MKDhsOFGQ09DfRKpgROjmLL1C-e9n7a_liccJC6Sr3MZafs1Yl39nmaINs"
+                        "Authorization": `Bearer ${TOKEN}`
                     }
                 })
                     .then(response => response.json())
