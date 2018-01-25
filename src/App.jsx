@@ -16,7 +16,7 @@ class App extends Component {
     }
 
     search() {
-        const TOKEN = "BQCQmekNINXtMHRzyBsrGEaC7PNaggDGxXSH8LrrmoQgoGML9LebCcg1Ty-NR7E-noxL5m7g59u9Rx-E2gbXNath5qVN4Md6ubNpc0_WzxaCTOATOrzvNnsNWRRIfNimPS31nSdAEjwXIueRIua0EoyGMfxzJDTPwObVO83lHUkNDMNI-CTzKtgUuZ56FUtdns8GXh8WGleuJkfjTX6VkX3K4-xqzvIyYmf1AuEIyKqQHwy_RVL8knxvCjBqKOU2ln8VbjdFQFPxuBE";
+        const TOKEN = "BQDL2wXCxCbjVUCitHPtGVI2L8UMynw_bn6DrMd_7o_6EPrHQ9SCp8k-W9qqAwCe4vQqszJhwcOjxrRngDIwVd7aGOVOnCzEWQx_cKFyX-xxAP_sKszaNNSyhNM_vv_p-g_hkt49Z0g4pbkyZ0yZJguOZVLishGFY4iUEWUtBLNR5I1QdcxZNC47WxxUXfd59Knkp29d_j0BS612Ndb53GVSRgdHYD8TazFXJ-K42GjltzVVEJI8pRtHMg_Qj1Y0EgVHz0Rj686N9Jg";
         const BASE_URL = 'https://api.spotify.com/v1/';
         let FETCH_URL = `${BASE_URL}search?q=${this.state.query}&type=artist&limit=1`;
         const ALBUM_URL = `${BASE_URL}artists/`;

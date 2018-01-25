@@ -88,7 +88,7 @@
 }
 .track{
     padding: 0.5em;
-    
+    position:relative;
 }
 .track-img{
     width: 100%;
@@ -98,4 +98,27 @@
 }
 .track-text{
     color: #ccc
+}
+.track-play{
+    width: 60px;
+    height: 60px;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+.track-play-inner{
+    text-align: center;
+    font-size: 2.5em;
+    background-color:black;
+    border-radius:30px;
+    width: 60px;
+    height: 60px;
+    color: white;
+
+    left:50%;
+    top:41%;
+    transform: translate(-50%, -50%);
+    position:absolute;
+   
+ 
 }
