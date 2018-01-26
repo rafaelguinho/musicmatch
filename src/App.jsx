@@ -11,12 +11,30 @@ class App extends Component {
         this.state = {
             query: '',
             artist: null,
-            tracks: []
+            tracks: [],
+            token: null
         }
     }
 
+    componentDidMount() {
+        
+                let hashParams = {};
+                let e, r = /([^&;=]+)=?([^&;]*)/g,
+                    q = window.location.hash.substring(1);
+                while ( e = r.exec(q)) {
+                    hashParams[e[1]] = decodeURIComponent(e[2]);
+                }
+        
+                if(!hashParams.access_token) {
+                    window.location.href = 'https://accounts.spotify.com/authorize?client_id=ec45daa8ba894ba6ba81647b5cb3dbe7&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20ugc-image-upload%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=token&redirect_uri=http://localhost:3000/callback';
+                } else {
+                    this.setState({token: hashParams.access_token});
+                }
+        
+            }
+
     search() {
-        const TOKEN = "BQDL2wXCxCbjVUCitHPtGVI2L8UMynw_bn6DrMd_7o_6EPrHQ9SCp8k-W9qqAwCe4vQqszJhwcOjxrRngDIwVd7aGOVOnCzEWQx_cKFyX-xxAP_sKszaNNSyhNM_vv_p-g_hkt49Z0g4pbkyZ0yZJguOZVLishGFY4iUEWUtBLNR5I1QdcxZNC47WxxUXfd59Knkp29d_j0BS612Ndb53GVSRgdHYD8TazFXJ-K42GjltzVVEJI8pRtHMg_Qj1Y0EgVHz0Rj686N9Jg";
+        const TOKEN = this.state.token;//"BQCIbtB48iF_gfwbCXoERG6H4B0PQ3jug9YMlEBNhr1bTX-gyTs1Kw3Fwx5RtTmLaZtngTq38bxgpujaAdmE8JNB2jRzyTLPlm1q3dCYyjeGpttnt6VYDB8wnXTyWCZqSxYjNuk90a1dH4B5VblCEPokROBjIizFgAHZ216g18HKQyORdy77fKfp4ZEzLsGdNTXCUsRHoui0m-is6wvZv97gOqt2QAqGd07c1wf6Lwv0G1bBAzSU9ZOLp-Ru-rkTAyZXkaHWuVVMYXU";
         const BASE_URL = 'https://api.spotify.com/v1/';
         let FETCH_URL = `${BASE_URL}search?q=${this.state.query}&type=artist&limit=1`;
         const ALBUM_URL = `${BASE_URL}artists/`;
