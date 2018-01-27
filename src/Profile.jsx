@@ -5,6 +5,9 @@ class Profile extends Component {
     toInitcap(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+    formatTotal(number){
+        return number.toLocaleString('en');
+    }
     render() {
         let artist = { name: '', followers: { total: '' }, images: [{ url: '' }], genres: [] };
 
@@ -14,7 +17,12 @@ class Profile extends Component {
         return (
             <div className="Profile">
                 <img className="Img-Profile" alt="profile" src={artist.images[0].url} />
-                <div className="Followers"><strong>{artist.followers.total}</strong> followers</div>
+                <div className="Followers">
+                <strong>
+                {
+                   this.formatTotal(artist.followers.total)
+                }
+                </strong> followers</div>
                 <div className="Genres">
                     {
                         artist.genres.map((genre, k) => {

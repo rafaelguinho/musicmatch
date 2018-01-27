@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Profile from './Profile';
 import Gallery from './Gallery';
+import NotFound from './NotFound';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +13,8 @@ class App extends Component {
             query: '',
             artist: null,
             tracks: [],
-            token: null
+            token: null,
+            notFound: false
         }
     }
 
@@ -46,8 +48,17 @@ class App extends Component {
                 "Authorization": `Bearer ${TOKEN}`
        }
         }).then(response => response.json())
+        .catch(error => {
+            this.setState({ notFound: true });
+        })
             .then(json => {
+                if(!json.artists.items.length){
+                    this.setState({ notFound: true });
+                    return; 
+                }
+
                 const artist = json.artists.items[0];
+
 
                 this.setState({ query: artist.name });
                 this.setState({ artist });
@@ -61,6 +72,7 @@ class App extends Component {
                  }
                 })
                     .then(response => response.json())
+                    .catch(error => console.error('Error:', error))
                     .then(json => {
                         const tracks = json.tracks;
                         this.setState({ tracks });
@@ -88,7 +100,10 @@ class App extends Component {
                                 }
                             }}
                             type="search" placeholder="Search and artist..." />
-                        <button onClick={() => this.search()}>Button</button>
+                            <div className="search-container">
+                            <button className="btn-round" onClick={() => this.search()}></button>
+                            </div>
+                        
                     </div>
                 </div>
                 {
@@ -97,7 +112,9 @@ class App extends Component {
                             <Profile artist={this.state.artist} />
                             <Gallery tracks={this.state.tracks}/>
                         </div>
-                        : <div></div>
+                        : this.state.notFound
+                            ? <NotFound />
+                            :<div></div>
                 }
 
             </div>
