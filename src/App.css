@@ -66,7 +66,7 @@
 }
 
 .Followers{
-    font-size: 1.8vw;
+    font-size: 1.8em;
     color: #f1d51d;
 }
 .Genres{
@@ -80,11 +80,6 @@
     color: white;
     text-align: center;
     margin: 0.5em 0
-}
-.gallery{
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    
 }
 .track{
     padding: 0.5em;
@@ -146,4 +141,44 @@
     text-align: center;
     font-size: 4vw;
     color: #FE6F5E
+}
+
+.gallery{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;   
+}
+
+@media all and (max-width: 1024px) {  
+    .gallery{
+        grid-template-columns: auto auto auto;   
+    }
+} 
+@media all and (max-width: 768px) { 
+    .gallery{
+        grid-template-columns: 50% 50%;   
+    }
+ } 
+@media all and (max-width: 575px) { 
+    .gallery{
+        grid-template-columns: 100%;   
+    } 
+
+    .track-img{
+        height: auto;
+    }
+
+    .Genres{
+        text-align: center
+    }
+    .App-title{
+        text-align: center
+    }
+    .Search-Field{
+        font-size: 1.8em
+    }
+    .btn-round {
+        background-size: 40px 40px;
+        width: 40px;
+        height: 40px;
+    }
 }
